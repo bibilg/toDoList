@@ -35,8 +35,12 @@ class DefaultController extends AbstractController
             return $this->redirectToRoute('home');
         }
 
+        $repository = $this->getDoctrine()->getRepository(Tasks::class);
+        $tasks = $repository->findAll();
+
         return $this->render('default/index.html.twig', [
             'form' => $form->createView(),
+            'tasks' => $tasks,
         ]);
     }
 }

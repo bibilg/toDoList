@@ -2,6 +2,8 @@
 
 {% form_theme form 'bootstrap_4_layout.html.twig' %}
 
+{% block stylesheets %}<link rel="stylesheet" href="{{ asset('assets/css/task.css') }}">{% endblock %} {# Chemin relatif au directory public #}
+
 {% block title %}Todolist{% endblock %}
 
 {% block body %}
@@ -11,4 +13,10 @@
     {{ form_row(form.description,{'attr' : {'placeholder' : "Ajoutez votre tache"} }) }}
     <button type="submit" class="btn btn-success">Ajouter</button>
     {{ form_end(form) }}
+
+    {% for task in tasks %}
+        <div class="task">
+            <p>{{ task.description }} créé le {{ task.creationDate|date('d-m-Y à H:i:s') }} </p>
+        </div>
+    {% endfor %}
 {% endblock %}
