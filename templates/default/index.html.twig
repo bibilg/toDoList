@@ -1,7 +1,14 @@
 {% extends 'base.html.twig' %}
 
+{% form_theme form 'bootstrap_4_layout.html.twig' %}
+
 {% block title %}Todolist{% endblock %}
 
 {% block body %}
 <h1 class="text-center">TODOLIST</h1>
+
+    {{ form_start(form) }}
+    {{ form_row(form.description,{'attr' : {'placeholder' : "Ajoutez votre tache"} }) }}
+    <button type="submit" class="btn btn-success">Ajouter</button>
+    {{ form_end(form) }}
 {% endblock %}
