@@ -7,7 +7,7 @@
 {% block title %}Todolist{% endblock %}
 
 {% block body %}
-<h1 class="text-center">TODOLIST</h1>
+    <h1 class="text-center">TODOLIST</h1>
 
     {{ form_start(form) }}
     {{ form_row(form.description,{'attr' : {'placeholder' : "Ajoutez votre tache"} }) }}
@@ -25,4 +25,6 @@
         </div>
     {% endif %}
     {% endfor %}
+
+    <a class="resolved" href="#">Voir les tâches résolues</a>
 {% endblock %}
