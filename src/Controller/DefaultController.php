@@ -43,4 +43,28 @@ class DefaultController extends AbstractController
             'tasks' => $tasks,
         ]);
     }
+
+    /**
+     * @Route("/complete/{id}", name="complete")
+     */
+    public function complete(Tasks $task, EntityManagerInterface $manager): Response
+    {
+        $task->setCompletionDate(new \DateTime());
+        $manager->persist($task);
+        $manager->flush();
+
+
+        return $this->redirectToRoute('home');
+    }
+
+    /**
+     * @Route("/delete/{id}", name="delete")
+     */
+    public function delete(Tasks $task, EntityManagerInterface $manager): Response
+    {
+        $manager->remove($task);
+        $manager->flush();
+
+        return $this->redirectToRoute('home');
+    }
 }
