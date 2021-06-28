@@ -1,6 +1,14 @@
 .task{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     margin : 2%;
     padding : 2%;
     background-color: gray;
     font-family: Arial, Helvetica, sans-serif;
+}
+
+.imgcheck{
+    width: 50px;
+    height: auto;
 }

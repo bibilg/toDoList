@@ -2,7 +2,7 @@
 
 {% form_theme form 'bootstrap_4_layout.html.twig' %}
 
-{% block stylesheets %}<link rel="stylesheet" href="{{ asset('assets/css/task.css') }}">{% endblock %} {# Chemin relatif au directory public #}
+{% block stylesheets %}<link rel="stylesheet" href="{{ asset('assets/css/task.css')}}">{% endblock %} {# Chemin relatif au directory public #}
 
 {% block title %}Todolist{% endblock %}
 
@@ -16,7 +16,8 @@
 
     {% for task in tasks %}
         <div class="task">
-            <p>{{ task.description }} créé le {{ task.creationDate|date('d-m-Y à H:i:s') }} </p>
+            <p>{{ task.description }} créé le {{ task.creationDate|date('d-m-Y à H:i:s') }} </p> 
+            <img class="imgcheck" src="{{asset('assets/images/check.png')}}" alt="validate" />
         </div>
     {% endfor %}
 {% endblock %}
