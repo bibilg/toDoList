@@ -17,7 +17,10 @@
     {% for task in tasks %}
         <div class="task">
             <p>{{ task.description }} créé le {{ task.creationDate|date('d-m-Y à H:i:s') }} </p> 
-            <img class="imgcheck" src="{{asset('assets/images/check.png')}}" alt="validate" />
+            <div class="images">
+                <a href="#"><img class="image" src="{{asset('assets/images/check.png')}}" alt="validate" /></a>
+                <a href="#"><img class="image" src="{{asset('assets/images/remove.png')}}" alt="remove" /></a>
+            </div>
         </div>
     {% endfor %}
 {% endblock %}
