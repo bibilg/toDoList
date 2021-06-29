@@ -10,7 +10,10 @@
     {% for task in tasksCompleted %}
         <div class="task">
             <p>{{ task.description }} créé le {{ task.creationDate|date('d-m-Y à H:i:s') }}</p> 
+            <div>
             <p>Complétée le {{ task.completionDate|date('d-m-Y à H:i:s') }}</p>
+            <a href="{{ path('delete', {id : task.id}) }}"><img class="image" src="{{asset('assets/images/remove.png')}}" alt="remove" /></a>
+            </div>
         </div>
     {% endfor %}
 
