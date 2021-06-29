@@ -66,7 +66,7 @@ class DefaultController extends AbstractController
         $manager->remove($task);
         $manager->flush();
 
-        $referer=$request->headers->get('referer'); // Chope le referer pour la redirection
+        $referer=filter_var($request->headers->get('referer'), FILTER_SANITIZE_URL); // Chope le referer pour la redirection, filtre la variable pour sécuriser
 
         return $this->redirect($referer);
     }
