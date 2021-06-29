@@ -19,8 +19,8 @@
         <div class="task">
             <p>{{ task.description }} créé le {{ task.creationDate|date('d-m-Y à H:i:s') }}</p> 
             <div class="images">
-                <a href="{{ path('complete', {id : task.id}) }}"><img class="image" src="{{asset('assets/images/check.png')}}" alt="validate" /></a>
-                <a href="{{ path('delete', {id : task.id}) }}"><img class="image" src="{{asset('assets/images/remove.png')}}" alt="remove" /></a>
+                <a href="{{ path('complete', {id : task.id}) }}"><img class="image" id="validate" src="{{asset('assets/images/check.png')}}" alt="validate" /></a>
+                <a href="{{ path('delete', {id : task.id}) }}"><img class="image" id="remove" src="{{asset('assets/images/remove.png')}}" alt="remove" /></a>
             </div>
         </div>
     {% endif %}
@@ -28,3 +28,5 @@
 
     <a class="resolved" href="{{ path('showcompleted') }}">Voir les tâches résolues</a>
 {% endblock %}
+
+{% block javascripts %}<script src="{{ asset('assets/js/main.js') }}"></script>{% endblock %}
