@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Tasks;
 use App\Form\TasksType;
+use App\Repository\TasksRepository;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\Persistence\ObjectManager;
@@ -66,5 +67,16 @@ class DefaultController extends AbstractController
         $manager->flush();
 
         return $this->redirectToRoute('home');
+    }
+
+    /**
+     * @Route("/showcompleted", name="showcompleted")
+     */
+    public function showcompleted(TasksRepository $tasksRepository): Response
+    {
+
+        return $this->render('default/completed.html.twig', [
+            "tasksCompleted" => $tasksRepository->findCompleted(),
+        ]);
     }
 }

@@ -19,6 +19,20 @@ class TasksRepository extends ServiceEntityRepository
         parent::__construct($registry, Tasks::class);
     }
 
+    /**
+    * @return Tasks[] Returns an array of Tasks objects
+    */
+    public function findCompleted()
+    {
+        return $this->createQueryBuilder('t')
+            ->where('t.completionDate IS NOT NULL')
+            ->orderBy('t.id', 'ASC')
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+    
+
     // /**
     //  * @return Tasks[] Returns an array of Tasks objects
     //  */

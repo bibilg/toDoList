@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}<link rel="stylesheet" href="{{ asset('assets/css/task.css')}}">{% endblock %} {# Chemin relatif au directory public #}
+
+{% block title %}Tâches complétées{% endblock %}
+
+{% block body %}
+    <h1 class="text-center">Tâches résolues</h1>
+
+    {% for task in tasksCompleted %}
+        <div class="task">
+            <p>{{ task.description }} créé le {{ task.creationDate|date('d-m-Y à H:i:s') }}</p> 
+            <p>Complétée le {{ task.completionDate|date('d-m-Y à H:i:s') }}</p>
+        </div>
+    {% endfor %}
+
+
+
+    <a class="resolved" href="{{ path('home') }}">Voir les tâches en cours</a>
+{% endblock %}
