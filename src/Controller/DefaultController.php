@@ -61,12 +61,14 @@ class DefaultController extends AbstractController
     /**
      * @Route("/delete/{id}", name="delete")
      */
-    public function delete(Tasks $task, EntityManagerInterface $manager): Response
+    public function delete(Tasks $task, EntityManagerInterface $manager,Request $request): Response
     {
         $manager->remove($task);
         $manager->flush();
 
-        return $this->redirectToRoute('home');
+        $referer=$request->headers->get('referer'); // Chope le referer pour la redirection
+
+        return $this->redirect($referer);
     }
 
     /**
